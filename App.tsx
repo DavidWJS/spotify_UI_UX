@@ -5,6 +5,11 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import useCachedResources from './hooks/useCachedResources';
 import useColorScheme from './hooks/useColorScheme';
 import Navigation from './navigation';
+import PlayerWidget from './components/PlayerWidget';
+
+import Amplify from 'aws-amplify'
+import config from './aws-exports'
+Amplify.configure(config)
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -17,6 +22,7 @@ export default function App() {
       <SafeAreaProvider>
         <Navigation colorScheme={colorScheme} />
         <StatusBar />
+        <PlayerWidget/>
       </SafeAreaProvider>
     );
   }
